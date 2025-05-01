@@ -1,5 +1,6 @@
 Feature: Realizar compra de articulos
 
+  @compra_un_articulo
   Scenario: Realizar compra de un articulo
     Given el usuario está en la página de login
     When el usuario ingresa su usuario "standard_user" y contraseña "secret_sauce"

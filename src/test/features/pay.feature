@@ -1,5 +1,6 @@
 Feature: Realizar compra de articulos
 
+  @compra_un_producto
   Scenario: Realizar compra de un articulo
     Given el usuario está en la página de login
     When el usuario ingresa su usuario "standard_user" y contraseña "secret_sauce"
@@ -10,6 +11,7 @@ Feature: Realizar compra de articulos
     And el usuario valida que el nombre de su producto y precio sea correcto
     Then el usuario finaliza la compra y se muestra un mensaje al finalizar "Thank you for your order!"
 
+  @compra_mas_de_un_producto
   Scenario Outline: Realizar compra de más de un articulo
     Given el usuario está en la página de login
     When el usuario ingresa su usuario "standard_user" y contraseña "secret_sauce"
@@ -21,4 +23,4 @@ Feature: Realizar compra de articulos
     Then el usuario finaliza la compra y se muestra un mensaje al finalizar "Thank you for your order!"
     Examples:
       |productos  |
-      | 6         |
+      | 3         |

@@ -8,21 +8,37 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import main.pages.LoginPage;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import static org.junit.Assert.assertEquals;
 
 public class PaySteps {
+    private WebDriver driver;
     LoginPage loginPage;
     PayPage payPage;
 
     @Given("el usuario está en la página de login")
     public void abrirPaginaLogin() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--incognito");
-        options.addArguments("--start-maximized");
-        WebDriver driver = new ChromeDriver(options);
+        String browser = System.getProperty("browser", "chrome"); // Leer el parámetro 'browser'
+
+        if (browser.equalsIgnoreCase("chrome")) {
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--incognito");
+            options.addArguments("--start-maximized");
+            driver = new ChromeDriver(options);
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            WebDriverManager.firefoxdriver().setup();
+            FirefoxOptions options = new FirefoxOptions();
+            options.addArguments("--private");
+            options.addArguments("--start-maximized");
+            driver = new FirefoxDriver(options);
+        } else {
+            throw new IllegalArgumentException("Navegador no soportado: " + browser);
+        }
+
         driver.get("https://www.saucedemo.com/");
         loginPage = new LoginPage(driver);
         payPage = new PayPage(driver);

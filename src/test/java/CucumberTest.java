@@ -1,4 +1,4 @@
-package test.runners;
+package test.java;
 
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
@@ -7,8 +7,8 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/features",
-        glue = "stepDefinitions",
+        glue = "test.stepDefinitions",
         plugin = {"pretty", "html:target/cucumber-reports"}
 )
-public class TestRunner {
+public class CucumberTest {
 }

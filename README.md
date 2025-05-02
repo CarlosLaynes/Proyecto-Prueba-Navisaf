@@ -23,7 +23,7 @@ Este proyecto implementa la automatización de la compra de uno o varios artícu
 
 1. Clonar este repositorio:
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/CarlosLaynes/Proyecto-Prueba-Navisaf.git
 
 ## Ejecución de la prueba
 
